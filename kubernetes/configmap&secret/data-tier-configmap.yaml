@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-config
+data:
+#  string multiline (ditandai dengan “|”)
+  config: |
+    tcp-keepalive 240
+    maxmemory 1mb
+#  data-tier-64dd6c7fcc-m9ftw
