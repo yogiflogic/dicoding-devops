@@ -1,4 +1,13 @@
 #Instalasi Istio :
+
+curl -L https://istio.io/downloadIstio | sh -
+cd istio-1.17.1
+export PATH=$PWD/bin:$PATH
+or
+nano .bashrc
+export PATH="$PATH:/home/xxxx/istio-1.18.2/bin"
+
+#menginstal Istio mengunakan profile bertipe demo
 istioctl install --set profile=demo -y
 
 #Deploy Aplikasi Bookinfo :
@@ -18,6 +27,9 @@ kubectl apply -f bookinfo-gateway.yaml
 #memastikan tak ada issue pada konfigurasi Istio
 istioctl analyze
 
+#Minikube tunnel yang akan mengirim traffic ke Istio Ingress Gateway
+#Proses ini akan memberikan kita sebuah external load balancer (EXTERNAL-IP)
+#untuk Kubernetes service bernama istio-ingressgateway di dalam namespace istio-system.
 minikube tunnel
 
 #simpan nilai-nilai yang diperlukan ke dalam environment variable di terminal window sebelumnya
